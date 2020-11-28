@@ -1,7 +1,8 @@
 # Nasıl kullanılır?
 
-Clientside
 ```lua
+# Clientside
+
 LAOT = nil
 
 Citizen.CreateThread(function()
@@ -12,8 +13,9 @@ Citizen.CreateThread(function()
 end)
 ```
 
-Serverside
 ```lua
+# Serverside
+
 LAOT = nil
 
 TriggerEvent('LAOTCore:getSharedObject', function(obj) LAOT = obj end)
