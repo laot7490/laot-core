@@ -53,6 +53,9 @@ end)
 ```
 
 ###### Bir bölgeye yakınken GTA Online Alt yazı metini yazma
+
+![Örnek sonucu](https://cdn.discordapp.com/attachments/754629142502441051/782117838123040788/GPS.png)
+
 ```lua
 Citizen.CreateThread(function()
 	while LAOT == nil do -- LAOT datasının yüklenmesini bekliyoruz...
