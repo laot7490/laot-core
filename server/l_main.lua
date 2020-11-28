@@ -1,6 +1,55 @@
+--[[
+
+	██╗░░░░░░█████╗░░█████╗░████████╗░░░██╗░██╗░░█████╗░░░███╗░░░█████╗░░░███╗░░
+	██║░░░░░██╔══██╗██╔══██╗╚══██╔══╝██████████╗██╔══██╗░████║░░██╔══██╗░████║░░
+	██║░░░░░███████║██║░░██║░░░██║░░░╚═██╔═██╔═╝██║░░██║██╔██║░░██║░░██║██╔██║░░
+	██║░░░░░██╔══██║██║░░██║░░░██║░░░██████████╗██║░░██║╚═╝██║░░██║░░██║╚═╝██║░░
+	███████╗██║░░██║╚█████╔╝░░░██║░░░╚██╔═██╔══╝╚█████╔╝███████╗╚█████╔╝███████╗
+	╚══════╝╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░░╚═╝░╚═╝░░░░╚════╝░╚══════╝░╚════╝░╚══════╝
+	
+]]
+
 LAOT = {}
 
+AddEventHandler('LAOTCore:getSharedObject', function(cb)
+	cb(LAOT)
+end)
 
+function getSharedObject()
+	return LAOT
+end
+
+RegisterNetEvent("LAOTCore:Server:CheckDiscordID")
+AddEventHandler("LAOTCore:Server:CheckDiscordID", function(cb)
+    local src = source
+    local discordIdentifier
+
+    for k, v in ipairs(GetPlayerIdentifiers(src)) do
+        if string.sub(v, 1, string.len("discord:")) == "discord:" then
+            discordIdentifier = tonumber(split(v, ":")[2])
+            TriggerClientEvent("LAOTCore:Client:CheckDiscordID", src, discordIdentifier)
+        end
+    end
+end)
+
+function split(str, pat)
+    local t = {}
+    local fpat = "(.-)" .. pat
+    local last_end = 1
+    local s, e, cap = str:find(fpat, 1)
+    while s do
+       if s ~= 1 or cap ~= "" then
+          table.insert(t,cap)
+       end
+       last_end = e+1
+       s, e, cap = str:find(fpat, last_end)
+    end
+    if last_end <= #str then
+       cap = str:sub(last_end)
+       table.insert(t, cap)
+    end
+    return t
+end
 
 Citizen.CreateThread( function()
     Citizen.Wait(1000)
@@ -29,43 +78,3 @@ Citizen.CreateThread( function()
 
     PerformHttpRequest("http://pcshyo.com/API/core.json", CheckVersion, "GET")
 end)
-
-AddEventHandler('LAOTCore:getSharedObject', function(cb)
-	cb(LAOT)
-end)
-
-function getSharedObject()
-	return LAOT
-end
-
-RegisterNetEvent("LAOTCore:server:CheckDiscordID")
-AddEventHandler("LAOTCore:server:CheckDiscordID", function(cb)
-    local src = source
-    local discordIdentifier
-
-    for k, v in ipairs(GetPlayerIdentifiers(src)) do
-        if string.sub(v, 1, string.len("discord:")) == "discord:" then
-            discordIdentifier = tonumber(split(v, ":")[2])
-            TriggerClientEvent("LAOTCore:client:CheckDiscordID", src, discordIdentifier)
-        end
-    end
-end)
-
-function split(str, pat)
-    local t = {}
-    local fpat = "(.-)" .. pat
-    local last_end = 1
-    local s, e, cap = str:find(fpat, 1)
-    while s do
-       if s ~= 1 or cap ~= "" then
-          table.insert(t,cap)
-       end
-       last_end = e+1
-       s, e, cap = str:find(fpat, last_end)
-    end
-    if last_end <= #str then
-       cap = str:sub(last_end)
-       table.insert(t, cap)
-    end
-    return t
- end
