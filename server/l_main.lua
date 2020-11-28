@@ -3,8 +3,12 @@ LAOT = {}
 
 
 Citizen.CreateThread( function()
-    print(LAOTShared.GetConfigData("Debug"))
     resourceName = GetCurrentResourceName()
+    if resourceName ~= "laot-core" then 
+        print("\n")
+        print("^1[laot-core] ^0Lütfen script ismini değiştirmeyiniz.\n")
+        print("https://github.com/laot7490/laot-core/releases/latest\n")
+    end
   
     function laotVersionCheck(err,responseText, headers)
         local currentVersion = tonumber(C.Version)
