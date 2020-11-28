@@ -54,7 +54,7 @@ end)
 
 ![Örnek sonucu](https://cdn.discordapp.com/attachments/754629142502441051/782118333213311026/3D.png)
 
-###### Bir bölgeye yakınken GTA Online Alt yazı metini yazma
+###### Bir bölgeye yakınken GTA Altyazı metini yazmak
 
 ```lua
 Citizen.CreateThread(function()
@@ -72,3 +72,24 @@ end)
 ```
 
 ![Örnek sonucu](https://cdn.discordapp.com/attachments/754629142502441051/782117838123040788/GPS.png)
+
+###### Bir bölgede [E] basınca oyuncuyu kararma efekti ile ışınlamak
+```lua
+Citizen.CreateThread(function()
+	while LAOT == nil do -- LAOT datasının yüklenmesini bekliyoruz...
+		Citizen.Wait(10)
+	end
+	while true do
+		local sleep = 1000 -- her 1 saniyede bir kontrol etme
+		if Vdist2(GetEntityCoords(PlayerPedId()), lokasyon.x, lokasyon.y, lokasyon.z) <= 10 then -- Eğer belirttiğimiz kordinattan oyuncu 15 blok yakınlığındaysa...
+			sleep = 1
+			if IsControlJustPressed(0, 38) then -- Oyuncu E basarsa
+				LAOT.Game.Teleport(1000, teleport.x, teleport.y, teleport.z, teleport.h, function()
+					LAOT.Notification("inform", "Başarı ile ışınlandınız.") -- 1 saniye kararma efekti ile oyuncuyu ışınladık.
+				end)
+			end
+		end
+		Citizen.Wait(sleep)
+	end
+end)
+```
