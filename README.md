@@ -1,7 +1,7 @@
-# Nasıl kullanılır?
+# LAOTCore v1.1
 
+[Clientside]
 ```lua
-# Clientside
 
 LAOT = nil
 
@@ -13,15 +13,13 @@ Citizen.CreateThread(function()
 end)
 ```
 
+[Serverside]
 ```lua
-# Serverside
 
 LAOT = nil
 
 TriggerEvent('LAOTCore:getSharedObject', function(obj) LAOT = obj end)
 ```
-
-# Soru ve Cevap
 
 ## LAOTCore Nedir?
 ###### LAOTCore yazdığım scriptlerde kullandığım altyapı sistemi denilebilir. Ayrıca içinde bulunan bir çok fonksiyon ile çoğu developera kısayol sunuyor.
