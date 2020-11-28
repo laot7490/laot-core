@@ -13,7 +13,7 @@
 LAOT      			  = {}
 
 LAOT.PlayerLoaded	  = false
-LAOT.Player 		  = {}
+LAOT.PlayerData 	  = {}
 
 LAOT.Game   		  = {}
 LAOT.Utils  		  = {}
@@ -25,9 +25,9 @@ end)
 
 RegisterNetEvent("LAOTCore:playerLoaded")
 AddEventHandler("LAOTCore:playerLoaded", function()
-	LAOT.Player["isBusy"] = false -- Kişi müsait mi, etkileşime girebilir mi?
+	LAOT.PlayerData["isBusy"] = false -- Kişi müsait mi, etkileşime girebilir mi?
 	TriggerServerEvent("LAOTCore:server:CheckDiscordID")
-	
+
 	Citizen.Wait(250)
 	LAOT.PlayerLoaded = true
 end)
@@ -41,11 +41,11 @@ function getSharedObject()
 end
 
 LAOT.GetPlayerData = function()
-	return LAOT.Player
+	return LAOT.PlayerData
 end
 
 LAOT.SetPlayerData = function(data, val)
-	LAOT.Player[data] = val
+	LAOT.PlayerData[data] = val
 end
 
 LAOT.Streaming.LoadModel = function(hash)
@@ -122,13 +122,10 @@ LAOT.DefaultNotification = function(text)
 	DrawNotification(false, true)
 end
 
-RegisterCommand("laot:test", function()
-	print(LAOT.GetPlayerData().discord)
-end, true)
 
 RegisterNetEvent("LAOTCore:client:CheckDiscordID")
 AddEventHandler("LAOTCore:client:CheckDiscordID", function(discordID)
-	LAOT.Player["discord"] = discordID
+	LAOT.PlayerData["discord"] = discordID
 end)
 
 RegisterNetEvent("LAOTCore:Notification")
