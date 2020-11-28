@@ -1,4 +1,4 @@
-# * Nasıl kullanılır?
+# *Nasıl kullanılır?
 
 ## Client-Side
 ```
