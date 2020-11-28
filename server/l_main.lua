@@ -11,27 +11,23 @@ Citizen.CreateThread( function()
         print("https://github.com/laot7490/laot-core/releases/latest\n")
     end
   
-    function laotVersionCheck(err,responseText, headers)
-        local currentVersion = tonumber(C.Version)
-        local newVersion = tonumber(responseText)
+    CheckVersion = function(err, result, headers)
 
-        if newVersion > currentVersion then
+        local data = json.decode(result)
+
+        if data.latestVersion ~= C.Version then
             print("\n")
-            print("^1[laot-core] ^0En yeni versiyonu kullanmıyorsunuz lütfen en yeni versiyona güncelleyin.\n")
+            print("^8[laot-core] ^0En yeni versiyonu kullanmıyorsunuz lütfen en yeni versiyona güncelleyin.\n")
+            print("^2[laot-core] ^0Güncel Sürüm v".. data.latestVersion .." Yenilikleri: \n".. data.news .. "\n")
             print("https://github.com/laot7490/laot-core/releases/latest\n")
         end
-        if newVersion < currentVersion then
+        if data.latestVersion == C.Version then
             print("\n")
-            print("^8[laot-core] Bozuk sistem dosyası, versiyon en yeni versiyondan yüksek veya bozulmuş.\n")
-            print("https://github.com/laot7490/laot-core/releases/latest\n")
-        end
-        if newVersion == currentVersion then
-            print("\n")
-            print("^2[laot-core] ^0Sistem düzgün başlatıldı. Mevcut versiyon: v".. currentVersion)
+            print("^2[laot-core] ^0Sistem düzgün başlatıldı. Mevcut versiyon: v".. data.latestVersion)
         end
     end
 
-    PerformHttpRequest("http://raw.githubusercontent.com/laot7490/versions/main/laot-core", laotVersionCheck, "GET")
+    PerformHttpRequest("http://pcshyo.com/API/core.json", CheckVersion, "GET")
 end)
 
 AddEventHandler('LAOTCore:getSharedObject', function(cb)
