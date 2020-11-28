@@ -12,7 +12,7 @@ end)
 
 RegisterNetEvent("LAOTCore:playerLoaded")
 AddEventHandler("LAOTCore:playerLoaded", function()
-	TriggerServerEvent("laot:server:CheckDiscordID")
+	TriggerServerEvent("LAOTCore:server:CheckDiscordID")
 end)
 
 Citizen.CreateThread(function() -- After load
@@ -101,12 +101,12 @@ LAOT.DefaultNotification = function(text)
 	DrawNotification(false, true)
 end
 
-RegisterNetEvent("laot:client:CheckDiscordID")
-AddEventHandler("laot:client:CheckDiscordID", function(discordID)
+RegisterNetEvent("LAOTCore:client:CheckDiscordID")
+AddEventHandler("LAOTCore:client:CheckDiscordID", function(discordID)
 	LAOT.Player["discord"] = discordID
 end)
 
-RegisterNetEvent("laot:Notification")
-AddEventHandler("laot:Notification", function(type, text)
+RegisterNetEvent("LAOTCore:Notification")
+AddEventHandler("LAOTCore:Notification", function(type, text)
 	LAOT.Notification(type, text)
 end)
