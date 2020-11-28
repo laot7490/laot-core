@@ -32,3 +32,22 @@ TriggerEvent('LAOTCore:getSharedObject', function(obj) LAOT = obj end)
 
 ## Güncellendiğinde eski versiyonda olanlar ne yapacak?
 ###### Çoğu script LAOTCore sistemi ile birlikte güncellenecek eski versiyonda kalanlara konsol üzerinden uyarısını verecek. Ancak kullanmayan olursa yeni sistemlerden mahrum kalacak. Onun dışında eski versiyonu kullanmaya devam edebilirler.
+
+# Örnekler ve Bilgilendirme
+
+###### Bir bölgeye yakınken 3D yazı yazma
+```lua
+Citizen.CreateThread(function()
+	while LAOT == nil do -- LAOT datasının yüklenmesini bekliyoruz...
+		Citizen.Wait(10)
+	end
+	while true do
+		local sleep = 1000 -- her 1 saniyede bir kontrol etme
+		if Vdist2(GetEntityCoords(PlayerPedId()), lokasyon.x, lokasyon.y, lokasyon.z) <= 15 then -- Eğer belirttiğimiz kordinattan oyuncu 15 blok yakınlığındaysa...
+			sleep = 1 -- Her frame çizdirmemiz gerekiyor.
+			LAOT.DrawText3D(lokasyon.x, lokasyon.y, lokasyon.z, "~g~E ~w~- Satin Al") -- Lokasyona satın al yazdırdık.
+		end
+		Citizen.Wait(sleep)
+	end
+end)
+```
