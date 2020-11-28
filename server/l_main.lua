@@ -3,6 +3,7 @@ LAOT = {}
 
 
 Citizen.CreateThread( function()
+    Citizen.Wait(1000)
     resourceName = GetCurrentResourceName()
     if resourceName ~= "laot-core" then 
         print("\n")
@@ -42,7 +43,7 @@ function getSharedObject()
 end
 
 RegisterNetEvent("LAOTCore:server:CheckDiscordID")
-AddEventHandler("LAOTCore:server:CheckDiscordID", function()
+AddEventHandler("LAOTCore:server:CheckDiscordID", function(cb)
     local src = source
     local discordIdentifier
 

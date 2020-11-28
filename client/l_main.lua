@@ -1,5 +1,18 @@
+--[[
+
+	██╗░░░░░░█████╗░░█████╗░████████╗░░░██╗░██╗░░█████╗░░░███╗░░░█████╗░░░███╗░░
+	██║░░░░░██╔══██╗██╔══██╗╚══██╔══╝██████████╗██╔══██╗░████║░░██╔══██╗░████║░░
+	██║░░░░░███████║██║░░██║░░░██║░░░╚═██╔═██╔═╝██║░░██║██╔██║░░██║░░██║██╔██║░░
+	██║░░░░░██╔══██║██║░░██║░░░██║░░░██████████╗██║░░██║╚═╝██║░░██║░░██║╚═╝██║░░
+	███████╗██║░░██║╚█████╔╝░░░██║░░░╚██╔═██╔══╝╚█████╔╝███████╗╚█████╔╝███████╗
+	╚══════╝╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░░╚═╝░╚═╝░░░░╚════╝░╚══════╝░╚════╝░╚══════╝
+	
+]]
+
+
 LAOT      			  = {}
 
+LAOT.PlayerLoaded	  = false
 LAOT.Player 		  = {}
 
 LAOT.Game   		  = {}
@@ -12,7 +25,11 @@ end)
 
 RegisterNetEvent("LAOTCore:playerLoaded")
 AddEventHandler("LAOTCore:playerLoaded", function()
+	LAOT.Player["isBusy"] = true -- Kişi müsait mi, etkileşime girebilir mi?
 	TriggerServerEvent("LAOTCore:server:CheckDiscordID")
+	
+	Citizen.Wait(250)
+	LAOT.PlayerLoaded = true
 end)
 
 Citizen.CreateThread(function() -- After load
@@ -25,6 +42,10 @@ end
 
 LAOT.GetPlayerData = function()
 	return LAOT.Player
+end
+
+LAOT.SetPlayerData = function(data, val)
+	LAOT.Player[data] = val
 end
 
 LAOT.Streaming.LoadModel = function(hash)
@@ -100,6 +121,10 @@ LAOT.DefaultNotification = function(text)
 	SetNotificationTextEntry('laotNotification')
 	DrawNotification(false, true)
 end
+
+RegisterCommand("laot:test", function()
+	print(LAOT.GetPlayerData().discord)
+end, true)
 
 RegisterNetEvent("LAOTCore:client:CheckDiscordID")
 AddEventHandler("LAOTCore:client:CheckDiscordID", function(discordID)
