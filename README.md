@@ -1,6 +1,6 @@
-# *Nasıl kullanılır?
+Nasıl kullanılır?
 
-## Client-Side
+**client-side**
 ```
 LAOT = nil
 
@@ -12,7 +12,7 @@ Citizen.CreateThread(function()
 end)
 ```
 
-## Server-Side
+**server-side**
 ```
 LAOT = nil
 
