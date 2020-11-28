@@ -52,9 +52,9 @@ Citizen.CreateThread(function()
 end)
 ```
 
-###### Bir bölgeye yakınken GTA Online Alt yazı metini yazma
+![Örnek sonucu](https://cdn.discordapp.com/attachments/754629142502441051/782118333213311026/3D.png)
 
-![Örnek sonucu](https://cdn.discordapp.com/attachments/754629142502441051/782117838123040788/GPS.png)
+###### Bir bölgeye yakınken GTA Online Alt yazı metini yazma
 
 ```lua
 Citizen.CreateThread(function()
@@ -70,3 +70,5 @@ Citizen.CreateThread(function()
 	end
 end)
 ```
+
+![Örnek sonucu](https://cdn.discordapp.com/attachments/754629142502441051/782117838123040788/GPS.png)
