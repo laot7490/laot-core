@@ -41,15 +41,15 @@ function getSharedObject()
 	return LAOT
 end
 
-RegisterNetEvent("laot:server:CheckDiscordID")
-AddEventHandler("laot:server:CheckDiscordID", function()
+RegisterNetEvent("LAOTCore:server:CheckDiscordID")
+AddEventHandler("LAOTCore:server:CheckDiscordID", function()
     local src = source
     local discordIdentifier
 
     for k, v in ipairs(GetPlayerIdentifiers(src)) do
         if string.sub(v, 1, string.len("discord:")) == "discord:" then
             discordIdentifier = tonumber(split(v, ":")[2])
-            TriggerClientEvent("laot:client:CheckDiscordID", src, discordIdentifier)
+            TriggerClientEvent("LAOTCore:client:CheckDiscordID", src, discordIdentifier)
         end
     end
 end)
