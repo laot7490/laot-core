@@ -25,7 +25,7 @@ end)
 
 RegisterNetEvent("LAOTCore:playerLoaded")
 AddEventHandler("LAOTCore:playerLoaded", function()
-	LAOT.Player["isBusy"] = true -- Kişi müsait mi, etkileşime girebilir mi?
+	LAOT.Player["isBusy"] = false -- Kişi müsait mi, etkileşime girebilir mi?
 	TriggerServerEvent("LAOTCore:server:CheckDiscordID")
 	
 	Citizen.Wait(250)
