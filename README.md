@@ -51,3 +51,19 @@ Citizen.CreateThread(function()
 	end
 end)
 ```
+
+###### Bir bölgeye yakınken GTA Online Alt yazı metini yazma
+```lua
+Citizen.CreateThread(function()
+	while LAOT == nil do -- LAOT datasının yüklenmesini bekliyoruz...
+		Citizen.Wait(10)
+	end
+	while true do
+		local sleep = 1000 -- her 1 saniyede bir kontrol etme
+		if Vdist2(GetEntityCoords(PlayerPedId()), lokasyon.x, lokasyon.y, lokasyon.z) <= 15 then -- Eğer belirttiğimiz kordinattan oyuncu 15 blok yakınlığındaysa...
+			LAOT.DrawSub("~o~GPS'te ~w~belirtilen alana git.", 1000) -- 1 saniye boyunca yazdırıyoruz...
+		end
+		Citizen.Wait(sleep)
+	end
+end)
+```
