@@ -49,7 +49,7 @@ LAOT.SetPlayerData = function(data, val)
 end
 
 LAOT.Streaming.LoadModel = function(hash)
-	if C.Debug then return print("Hash yukleniyor: " .. hash .."") end
+	if C.Debug then return print("Requesting hash: " .. hash .."") end
 	model = GetHashKey(hash)
 	RequestModel(model)
 	while not HasModelLoaded(model) do
@@ -60,7 +60,7 @@ LAOT.Streaming.LoadModel = function(hash)
 end
 
 LAOT.Streaming.LoadAnimDict = function(dict, cb)
-	if C.Debug then return print("Hash yukleniyor: " .. hash .."") end
+	if C.Debug then return print("Requesting anim dict: " .. hash .."") end
 	while (not HasAnimDictLoaded(dict)) do
         RequestAnimDict(dict)
         Citizen.Wait(5)
