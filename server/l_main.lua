@@ -52,7 +52,7 @@ function split(str, pat)
 end
 
 Citizen.CreateThread( function()
-    Citizen.Wait(1000)
+    Citizen.Wait(1050)
     resourceName = GetCurrentResourceName()
     if resourceName ~= "laot-core" then 
         print("\n")
