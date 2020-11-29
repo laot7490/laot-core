@@ -1,4 +1,4 @@
-# LAOTCore v1.1.2
+# LAOTCore v1.1.3
 
 [Clientside]
 ```lua
@@ -45,7 +45,7 @@ Citizen.CreateThread(function()
 		local sleep = 1000 -- her 1 saniyede bir kontrol etme
 		if Vdist2(GetEntityCoords(PlayerPedId()), lokasyon.x, lokasyon.y, lokasyon.z) <= 15 then -- Eğer belirttiğimiz kordinattan oyuncu 15 blok yakınlığındaysa...
 			sleep = 1 -- Her frame çizdirmemiz gerekiyor.
-			LAOT.DrawText3D(lokasyon.x, lokasyon.y, lokasyon.z, "~g~E ~w~- Satin Al") -- Lokasyona satın al yazdırdık.
+			LAOT.DrawText3D(lokasyon.x, lokasyon.y, lokasyon.z, "~g~E ~w~- Satin Al", 0.40) -- Lokasyona satın al yazdırdık.
 		end
 		Citizen.Wait(sleep)
 	end
