@@ -25,7 +25,7 @@ end)
 
 RegisterNetEvent("LAOTCore:playerLoaded")
 AddEventHandler("LAOTCore:playerLoaded", function()
-	LAOT.PlayerData["isBusy"] = false -- Kişi müsait mi, etkileşime girebilir mi?
+	LAOT.PlayerData["isBusy"] = false -- Kişi müsait mi, etkileşime girebilir mi? || Is player busy, is he/she can interact?
 	TriggerServerEvent("LAOTCore:Server:CheckDiscordID")
 
 	Citizen.Wait(250)
@@ -49,7 +49,7 @@ LAOT.SetPlayerData = function(data, val)
 end
 
 LAOT.Streaming.LoadModel = function(hash)
-	if C.Debug then return print("Requesting model hash: " .. hash .."") end
+	if C.Debug then return print(_U("LAOT_R_M_HASH").. ''.. hash) end
 	model = GetHashKey(hash)
 	RequestModel(model)
 	while not HasModelLoaded(model) do
@@ -60,7 +60,7 @@ LAOT.Streaming.LoadModel = function(hash)
 end
 
 LAOT.Streaming.LoadAnimDict = function(dict, cb)
-	if C.Debug then return print("Requesting anim dict: " .. hash .."") end
+	if C.Debug then return print(_U("LAOT_R_A_DICT").. ''.. hash) end
 	while (not HasAnimDictLoaded(dict)) do
         RequestAnimDict(dict)
         Citizen.Wait(5)
@@ -71,8 +71,8 @@ LAOT.Streaming.LoadAnimDict = function(dict, cb)
 	end
 end
 
-LAOT.DrawText3D = function(x, y, z, text)
-    SetTextScale(0.35, 0.35)
+LAOT.DrawText3D = function(x, y, z, text, scale)
+    if scale then SetTextScale(scale, scale) else SetTextScale(0.35, 0.35) end
     SetTextFont(4)
     SetTextProportional(1)
     SetTextColour(255, 255, 255, 215)
