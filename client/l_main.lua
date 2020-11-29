@@ -49,7 +49,7 @@ LAOT.SetPlayerData = function(data, val)
 end
 
 LAOT.Streaming.LoadModel = function(hash)
-	if C.Debug then return print("Requesting hash: " .. hash .."") end
+	if C.Debug then return print("Requesting model hash: " .. hash .."") end
 	model = GetHashKey(hash)
 	RequestModel(model)
 	while not HasModelLoaded(model) do
