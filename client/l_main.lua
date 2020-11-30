@@ -60,7 +60,7 @@ LAOT.Streaming.LoadModel = function(hash)
 end
 
 LAOT.Streaming.LoadAnimDict = function(dict, cb)
-	if C.Debug then return print(_U("LAOT_R_A_DICT").. ''.. hash) end
+	if C.Debug then return print(_U("LAOT_R_A_DICT").. ''.. dict) end
 	while (not HasAnimDictLoaded(dict)) do
         RequestAnimDict(dict)
         Citizen.Wait(5)
