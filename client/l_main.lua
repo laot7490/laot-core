@@ -1,11 +1,11 @@
 --[[
 
-	██╗░░░░░░█████╗░░█████╗░████████╗░░░██╗░██╗░░█████╗░░░███╗░░░█████╗░░░███╗░░
-	██║░░░░░██╔══██╗██╔══██╗╚══██╔══╝██████████╗██╔══██╗░████║░░██╔══██╗░████║░░
-	██║░░░░░███████║██║░░██║░░░██║░░░╚═██╔═██╔═╝██║░░██║██╔██║░░██║░░██║██╔██║░░
-	██║░░░░░██╔══██║██║░░██║░░░██║░░░██████████╗██║░░██║╚═╝██║░░██║░░██║╚═╝██║░░
-	███████╗██║░░██║╚█████╔╝░░░██║░░░╚██╔═██╔══╝╚█████╔╝███████╗╚█████╔╝███████╗
-	╚══════╝╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░░╚═╝░╚═╝░░░░╚════╝░╚══════╝░╚════╝░╚══════╝
+	██╗░░░░░░█████╗░░█████╗░████████╗░░░██╗░██╗░██████╗░███████╗░█████╗░░█████╗░
+	██║░░░░░██╔══██╗██╔══██╗╚══██╔══╝██████████╗╚════██╗██╔════╝██╔══██╗██╔══██╗
+	██║░░░░░███████║██║░░██║░░░██║░░░╚═██╔═██╔═╝░░███╔═╝██████╗░╚██████║╚██████║
+	██║░░░░░██╔══██║██║░░██║░░░██║░░░██████████╗██╔══╝░░╚════██╗░╚═══██║░╚═══██║
+	███████╗██║░░██║╚█████╔╝░░░██║░░░╚██╔═██╔══╝███████╗██████╔╝░█████╔╝░█████╔╝
+	╚══════╝╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░░╚═╝░╚═╝░░░╚══════╝╚═════╝░░╚════╝░░╚════╝░
 	
 ]]
 
@@ -112,14 +112,24 @@ end
 
 LAOT.Notification = function(type, text)
 	if C.Myhtic_Notify then
-		exports['mythic_notify']:DoHudText(type, text)
+		if C.Myhtic_Setting == 'DoHudText' then exports['mythic_notify']:DoHudText(type, text) elseif C.Myhtic_Setting == 'SendAlert' then
+			exports['mythic_notify']:SendAlert(type, text)
+		end
 	end
 end
 
-LAOT.DefaultNotification = function(text)
-	AddTextEntry('laotNotification', text)
-	SetNotificationTextEntry('laotNotification')
-	DrawNotification(false, true)
+LAOT.ShowHelpNotification = function(msg, onlyThisFrame, sound, duration)
+	AddTextEntry('laotHelpNotification', msg)
+
+	if onlyThisFrame then
+		DisplayHelpTextThisFrame('laotHelpNotification', false)
+	else
+		if sound == nil then 
+			sound = true 
+		end
+		BeginTextCommandDisplayHelp('laotHelpNotification')
+		EndTextCommandDisplayHelp(0, false, beep, duration or -1)
+	end
 end
 
 
