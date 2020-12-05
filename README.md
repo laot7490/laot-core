@@ -1,4 +1,4 @@
-# LAOTCore v1.1.3
+# LAOTCore v1.1.4
 
 [Clientside]
 ```lua
