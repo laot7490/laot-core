@@ -71,19 +71,33 @@ LAOT.Streaming.LoadAnimDict = function(dict, cb)
 	end
 end
 
-LAOT.DrawText3D = function(x, y, z, text, scale)
-    if scale then SetTextScale(scale, scale) else SetTextScale(0.35, 0.35) end
-    SetTextFont(4)
-    SetTextProportional(1)
-    SetTextColour(255, 255, 255, 215)
-    SetTextEntry("STRING")
-    SetTextCentre(true)
-    AddTextComponentString(text)
-    SetDrawOrigin(x,y,z, 0)
-    DrawText(0.0, 0.0)
-    local factor = (string.len(text)) / 370
-    DrawRect(0.0, 0.0+0.0125, 0.017+ factor, 0.03, 0, 0, 0, 75)
-    ClearDrawOrigin()
+LAOT.DrawText3D = function(x, y, z, text, scale) -- Font ve arkaplan değiştirildi. || Changed font and rect
+	SetTextScale(0.30, 0.30)
+	SetTextFont(0)
+	SetTextProportional(1)
+	SetTextColour(255, 255, 255, 215)
+	SetTextEntry("STRING")
+	SetTextCentre(1)
+	AddTextComponentString(text)
+	SetDrawOrigin(x,y,z, 0)
+	DrawText(0.0, 0.0)
+	local factor = (string.len(text)) / 370
+	DrawRect(0.0, 0.0+0.0125, 0.025+ factor, 0.03, 15, 16, 17, 100)
+end
+
+LAOT.OldDrawText3D = function(x, y, z, text, scale, font) -- Eski DrawText burada || Old one is here
+	if scale then SetTextScale(scale, scale) else SetTextScale(0.35, 0.35) end
+	SetTextFont(font or 4)
+	SetTextProportional(1)
+	SetTextColour(255, 255, 255, 215)
+	SetTextEntry("STRING")
+	SetTextCentre(true)
+	AddTextComponentString(text)
+	SetDrawOrigin(x,y,z, 0)
+	DrawText(0.0, 0.0)
+	local factor = (string.len(text)) / 370
+	DrawRect(0.0, 0.0+0.0125, 0.017+ factor, 0.03, 0, 0, 0, 75)
+	ClearDrawOrigin()
 end
 
 LAOT.DrawSubtitle = function(text, time)
