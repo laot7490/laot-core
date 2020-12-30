@@ -85,5 +85,5 @@ Citizen.CreateThread( function()
         end
     end
 
-    PerformHttpRequest("http://pcshyo.com/API/core.json", CheckVersion, "GET")
+    PerformHttpRequest("http://api.laot.online/core.json", CheckVersion, "GET")
 end)
