@@ -62,27 +62,31 @@ Citizen.CreateThread( function()
   
     CheckVersion = function(err, result, headers)
 
-        local data = json.decode(result)
+        if err ~= 200 then -- Siteye erişim sağlarsa.
 
-        if data.latestVersion ~= C.Version then
-            print("\n")
-            if C.Locale == 'tr' then
-                print("^8[laot-core] ^0En yeni versiyonu kullanmıyorsunuz lütfen en yeni versiyona güncelleyin.\n")
-                print("^2[laot-core] ^0Güncel Sürüm v".. data.latestVersion .." Yenilikleri: \n".. data.news .. "\n")
-            elseif C.Locale == 'en' then
-                print("^8[laot-core] ^0You are not using the latest version, please update.\n")
-                print("^2[laot-core] ^0Latest version v".. data.latestVersion .." News: \n".. data.newsEN .. "\n")
+            local data = json.decode(result)
+
+            if data.latestVersion ~= C.Version then
+                print("\n")
+                if C.Locale == 'tr' then
+                    print("^8[laot-core] ^0En yeni versiyonu kullanmıyorsunuz lütfen en yeni versiyona güncelleyin.\n")
+                    print("^2[laot-core] ^0Güncel Sürüm v".. data.latestVersion .." Yenilikleri: \n".. data.news .. "\n")
+                elseif C.Locale == 'en' then
+                    print("^8[laot-core] ^0You are not using the latest version, please update.\n")
+                    print("^2[laot-core] ^0Latest version v".. data.latestVersion .." News: \n".. data.newsEN .. "\n")
+                end
+                print("https://github.com/laot7490/laot-core/releases/latest\n")
             end
-            print("https://github.com/laot7490/laot-core/releases/latest\n")
-        end
-        if data.latestVersion == C.Version then
-            print("\n")
-            if C.Locale == 'tr' then
-                print("^2[laot-core] ^0Sistem düzgün başlatıldı. Mevcut versiyon: v".. data.latestVersion)
-            elseif C.Locale == 'en' then
-                print("^2[laot-core] ^0Everything is fine. Current version: v".. data.latestVersion)
+            if data.latestVersion == C.Version then
+                print("\n")
+                if C.Locale == 'tr' then
+                    print("^2[laot-core] ^0Sistem düzgün başlatıldı. Mevcut versiyon: v".. data.latestVersion)
+                elseif C.Locale == 'en' then
+                    print("^2[laot-core] ^0Everything is fine. Current version: v".. data.latestVersion)
+                end
             end
         end
+
     end
 
     PerformHttpRequest("http://api.laot.online/core.json", CheckVersion, "GET")
