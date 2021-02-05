@@ -14,6 +14,8 @@ LAOT      			  = {}
 
 LAOT.PlayerLoaded	  = false
 LAOT.PlayerData 	  = {}
+LAOT.CurrentRequestId = 0
+LAOT.ServerCallbacks  = {}
 
 LAOT.Game   		  = {}
 LAOT.Utils  		  = {}
@@ -46,6 +48,22 @@ end
 
 LAOT.SetPlayerData = function(data, val)
 	LAOT.PlayerData[data] = val
+end
+
+LAOT.GetPlayerServerId = function()
+	return GetPlayerServerId(PlayerId())
+end
+
+LAOT.TriggerServerCallback = function(name, cb, ...)
+	LAOT.ServerCallbacks[LAOT.CurrentRequestId] = cb
+
+	TriggerServerEvent('LAOTCore:triggerServerCallback', name, LAOT.CurrentRequestId, ...)
+
+	if LAOT.CurrentRequestId < 65535 then
+		LAOT.CurrentRequestId = LAOT.CurrentRequestId + 1
+	else
+		LAOT.CurrentRequestId = 0
+	end
 end
 
 LAOT.Streaming.LoadModel = function(hash)
@@ -155,4 +173,10 @@ end)
 RegisterNetEvent("LAOTCore:Notification")
 AddEventHandler("LAOTCore:Notification", function(type, text)
 	LAOT.Notification(type, text)
+end)
+
+RegisterNetEvent('LAOTCore:serverCallback')
+AddEventHandler('LAOTCore:serverCallback', function(requestId, ...)
+	LAOT.ServerCallbacks[requestId](...)
+	LAOT.ServerCallbacks[requestId] = nil
 end)

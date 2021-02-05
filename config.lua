@@ -1,6 +1,6 @@
 C = {} -- laot#2599
 
-C.Version = "1.1.4" -- in BETA
+C.Version = "1.1.5" -- in BETA
 C.Locale = 'tr' --[[ tr / en ]]
 
 C.Debug = false -- Yaptığı eylemleri konsola belirtsin mi?

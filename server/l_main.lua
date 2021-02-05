@@ -9,7 +9,8 @@
 	
 ]]
 
-LAOT = {}
+LAOT                 = {}
+LAOT.ServerCallbacks = {}
 
 AddEventHandler('LAOTCore:getSharedObject', function(cb)
 	cb(LAOT)
@@ -18,6 +19,27 @@ end)
 function getSharedObject()
 	return LAOT
 end
+
+LAOT.RegisterServerCallback = function(name, cb)
+	LAOT.ServerCallbacks[name] = cb
+end
+
+LAOT.TriggerServerCallback = function(name, requestId, source, cb, ...)
+	if LAOT.ServerCallbacks[name] then
+		LAOT.ServerCallbacks[name](source, cb, ...)
+	else
+		print(('[laot-core] "%s" callback bulunmamasına rağmen oynatıldı.'):format(name))
+	end
+end
+
+RegisterServerEvent('LAOTCore:triggerServerCallback')
+AddEventHandler('LAOTCore:triggerServerCallback', function(name, requestId, ...)
+	local playerId = source
+
+	LAOT.TriggerServerCallback(name, requestId, playerId, function(...)
+		TriggerClientEvent('LAOTCore:serverCallback', playerId, requestId, ...)
+	end, ...)
+end)
 
 RegisterNetEvent("LAOTCore:Server:CheckDiscordID")
 AddEventHandler("LAOTCore:Server:CheckDiscordID", function(cb)
@@ -62,7 +84,7 @@ Citizen.CreateThread( function()
   
     CheckVersion = function(err, result, headers)
 
-        if err ~= 200 then -- Siteye erişim sağlarsa.
+        if result then
 
             local data = json.decode(result)
 
@@ -85,9 +107,10 @@ Citizen.CreateThread( function()
                     print("^2[laot-core] ^0Everything is fine. Current version: v".. data.latestVersion)
                 end
             end
-        end
 
+        end
     end
+
 
     PerformHttpRequest("http://api.laot.online/core.json", CheckVersion, "GET")
 end)
