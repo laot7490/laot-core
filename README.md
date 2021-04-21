@@ -1,4 +1,4 @@
-# LAOTCore v1.1.5
+# LAOTCore v2.0-BETA
 
 [Clientside]
 ```lua
@@ -7,7 +7,7 @@ LAOT = nil
 
 Citizen.CreateThread(function()
 	while LAOT == nil do
-		TriggerEvent('LAOTCore:getSharedObject', function(obj) LAOT = obj end)
+		TriggerEvent('LAOTCore:GetObject', function(obj) LAOT = obj end)
 		Citizen.Wait(0)
 	end
 end)
@@ -18,7 +18,7 @@ end)
 
 LAOT = nil
 
-TriggerEvent('LAOTCore:getSharedObject', function(obj) LAOT = obj end)
+TriggerEvent('LAOTCore:GetObject', function(obj) LAOT = obj end)
 ```
 
 ## LAOTCore Nedir?
@@ -45,7 +45,7 @@ Citizen.CreateThread(function()
 		local sleep = 1000 -- her 1 saniyede bir kontrol etme
 		if Vdist2(GetEntityCoords(PlayerPedId()), lokasyon.x, lokasyon.y, lokasyon.z) <= 15 then -- Eğer belirttiğimiz kordinattan oyuncu 15 blok yakınlığındaysa...
 			sleep = 1 -- Her frame çizdirmemiz gerekiyor.
-			LAOT.DrawText3D(lokasyon.x, lokasyon.y, lokasyon.z, "~g~E ~w~- Satin Al", 0.40) -- Lokasyona satın al yazdırdık.
+			LAOT.Functions.DrawText3D(lokasyon.x, lokasyon.y, lokasyon.z, "~g~E ~w~- Satin Al", 0.40) -- Lokasyona satın al yazdırdık.
 		end
 		Citizen.Wait(sleep)
 	end
@@ -64,7 +64,7 @@ Citizen.CreateThread(function()
 	while true do
 		local sleep = 1000 -- her 1 saniyede bir kontrol etme
 		if Vdist2(GetEntityCoords(PlayerPedId()), lokasyon.x, lokasyon.y, lokasyon.z) <= 15 then -- Eğer belirttiğimiz kordinattan oyuncu 15 blok yakınlığındaysa...
-			LAOT.DrawSubtitle("~o~GPS'te ~w~belirtilen alana git.", 1000) -- 1 saniye boyunca yazdırıyoruz...
+			LAOT.Functions.DrawSubtitle("~o~GPS'te ~w~belirtilen alana git.", 1000) -- 1 saniye boyunca yazdırıyoruz...
 		end
 		Citizen.Wait(sleep)
 	end
@@ -84,8 +84,8 @@ Citizen.CreateThread(function()
 		if Vdist2(GetEntityCoords(PlayerPedId()), lokasyon.x, lokasyon.y, lokasyon.z) <= 10 then -- Eğer belirttiğimiz kordinattan oyuncu 15 blok yakınlığındaysa...
 			sleep = 1
 			if IsControlJustPressed(0, 38) then -- Oyuncu E basarsa
-				LAOT.Game.Teleport(1000, teleport.x, teleport.y, teleport.z, teleport.h, function()
-					LAOT.Notification("inform", "Başarı ile ışınlandınız.") -- 1 saniye kararma efekti ile oyuncuyu ışınladık.
+				LAOT.Functions.Teleport(1000, teleport.x, teleport.y, teleport.z, teleport.h, function()
+					LAOT.Functions.Notify("inform", "Başarı ile ışınlandınız.") -- 1 saniye kararma efekti ile oyuncuyu ışınladık.
 				end)
 			end
 		end
