@@ -12,7 +12,7 @@
 LAOT                 = {}
 LAOT.ServerCallbacks = {}
 
-AddEventHandler('LAOTCore:getSharedObject', function(cb)
+AddEventHandler('LAOTCore:GetObject', function(cb)
 	cb(LAOT)
 end)
 
