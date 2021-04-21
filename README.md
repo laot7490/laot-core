@@ -1,6 +1,35 @@
 # How to update? - Nasıl güncellerim?
 
-![Örnek sonucu](https://cdn.discordapp.com/attachments/787240500297728003/834294626906144818/unknown.png)
+LAOT-Core v1.1.5 > 2.0
+
+:flag_tr: Eğer benim sistemlerim harici bir sisteminizde laot-core kullandıysanız bu belge ile sistemi güncelleyebilirsiniz. Benim sistemlerimin github üzerinden güncel halini indirebilirsiniz.
+
+:flag_gb: If you are using the laot-core functions except my systems. You can update your codes using this document. You can download my up to date systems from github.
+
+------------------------------------------------------------------------------
+
+:flag_tr: Kullandığım sistemlerimi nası güncelleyebilirim?
+
+Öncelikle resources klasörünüzü workspace olarak açın. (visual studio yardımı ile)
+Sonra sol taraftaki  :mag: emojisine tıklayın.
+
+Search                                         |            Replace
+LAOT.Notification                     -> LAOT.Functions.Notify
+LAOT.TriggerServerCallback  -> LAOT.Functions.TriggerCallback
+LAOT.RegisterServerCallback -> LAOT.Functions.CreateServerCallback
+LAOT.DrawText3D                   -> LAOT.Functions.DrawText3D
+LAOT.GetPlayerData                -> LAOT.Functions.GetPlayerData
+LAOT.SetPlayerData                 -> LAOT.Functions.SetPlayerData
+LAOT.GetPlayerServerId          -> LAOT.Functions.GetPlayerServerId
+LAOT.DrawSubtitle                   -> LAOT.Functions.DrawSubtitle
+LAOT.Game.Teleport                -> LAOT.Functions.Teleport
+LAOT.ShowHelpNotification   -> LAOT.Functions.ShowHelpNotification
+
+Events:
+
+Search                                         |            Replace
+LAOTCore:getSharedObject -> LAOTCore:GetObject
+LAOTCore:Notification           -> LAOTCore:Client:Notify
 
 # LAOTCore v2.0-BETA
 
