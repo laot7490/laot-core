@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.notification {
+  margin-bottom: 1vh;
+  position: absolute;
+  top: 2vh;
+  left: 2vh;
+  background-color: rgb(53, 53, 53, 0.8);
+  max-width: fit-content;
+  min-width: 22vh;
+  min-height: 3.5vh;
+  max-height: 3.5vh;
+  padding: 0.8vh;
+  margin-left: 60%;
+  border-left: 5px #00d5ff solid;
+  width: fit-content;
+
+  -webkit-box-shadow: 11px 10px 58px -22px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 11px 10px 58px -22px rgba(0, 0, 0, 0.75);
+  box-shadow: 11px 10px 58px -22px rgba(0, 0, 0, 0.75);
+}
+
+.notification-title {
+  padding-left: 5px;
+  font-size: 1.5vh;
+  text-align: center;
+}
+
+p {
+  color: #ffffff;
+}
