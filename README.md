@@ -1,3 +1,7 @@
+# How to update? - Nasıl güncellerim?
+
+![Örnek sonucu](https://cdn.discordapp.com/attachments/787240500297728003/834294626906144818/unknown.png)
+
 # LAOTCore v2.0-BETA
 
 [Clientside]
