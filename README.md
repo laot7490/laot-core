@@ -9,16 +9,16 @@ If you are using the laot-core functions except my systems. You can update your 
 Öncelikle resources klasörünüzü workspace olarak açın. (visual studio yardımı ile)
 Sonra sol taraftaki büyüteç emojisine tıklayın.
 ```lua
-Search                                         |            Replace
-LAOT.Notification                     -> LAOT.Functions.Notify
+Search                      |       Replace
+LAOT.Notification           -> LAOT.Functions.Notify
 LAOT.TriggerServerCallback  -> LAOT.Functions.TriggerCallback
 LAOT.RegisterServerCallback -> LAOT.Functions.CreateServerCallback
-LAOT.DrawText3D                   -> LAOT.Functions.DrawText3D
-LAOT.GetPlayerData                -> LAOT.Functions.GetPlayerData
-LAOT.SetPlayerData                 -> LAOT.Functions.SetPlayerData
-LAOT.GetPlayerServerId          -> LAOT.Functions.GetPlayerServerId
-LAOT.DrawSubtitle                   -> LAOT.Functions.DrawSubtitle
-LAOT.Game.Teleport                -> LAOT.Functions.Teleport
+LAOT.DrawText3D             -> LAOT.Functions.DrawText3D
+LAOT.GetPlayerData          -> LAOT.Functions.GetPlayerData
+LAOT.SetPlayerData          -> LAOT.Functions.SetPlayerData
+LAOT.GetPlayerServerId      -> LAOT.Functions.GetPlayerServerId
+LAOT.DrawSubtitle           -> LAOT.Functions.DrawSubtitle
+LAOT.Game.Teleport          -> LAOT.Functions.Teleport
 LAOT.ShowHelpNotification   -> LAOT.Functions.ShowHelpNotification
 
 
