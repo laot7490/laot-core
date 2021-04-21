@@ -66,6 +66,15 @@ TriggerEvent('LAOTCore:GetObject', function(obj) LAOT = obj end)
 
 # Örnekler ve Bilgilendirme
 
+###### Notification - bildirim
+```lua
+LAOT.Functions.Notify("inform", "Selam")
+LAOT.Functions.Notify("error", "Selam")
+LAOT.Functions.Notify("success", "Selam")
+```
+
+![Örnek sonucu](https://cdn.discordapp.com/attachments/793769759362514964/834297798539083816/unknown.png)
+
 ###### Bir bölgeye yakınken 3D yazı yazma
 ```lua
 Citizen.CreateThread(function()
