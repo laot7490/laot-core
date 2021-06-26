@@ -36,11 +36,11 @@ LAOT.Functions.TriggerCallback = function(name, requestId, source, cb, ...)
 	end
 end
 
-LAOT.JSON.Create = function(scriptName, fileName, data)
+LAOT.JSON.Create = function(scriptName, fileName)
     if not LAOT.JSONData[scriptName .. "__".. fileName] then
-        if scriptName and fileName and data then
-            SaveResourceFile("laot-core", "/jsons/".. scriptName .."__".. fileName ..".json", json.encode(data), -1)
-            LAOT.JSONData[scriptName .. "__".. fileName] = json.encode(data)
+        if scriptName and fileName then
+            SaveResourceFile("laot-core", "/jsons/".. scriptName .."__".. fileName ..".json", json.encode({}), -1)
+            LAOT.JSONData[scriptName .. "__".. fileName] = json.encode({})
         end
     else
         print(('^1[laot-core] ^0"%s" adlı bir json verisi zaten var olmasına rağmen oluşturulmaya çalışıldı.'):format(fileName))
@@ -50,7 +50,20 @@ end
 LAOT.JSON.GetData = function(scriptName, fileName)
     if scriptName and fileName then
         local jsonData = LoadResourceFile("laot-core", "/jsons/".. scriptName .."__".. fileName ..".json")
-        return jsonData
+        return jsonData or "404"
+    else
+        print(('^1[laot-core] ^0"%s" adlı bir json verisi olmamasına rağmen verileri alınmaya çalışıldı.'):format(fileName))
+    end
+end
+
+LAOT.JSON.Insert = function(scriptName, fileName, data)
+    if scriptName and fileName then
+        local jsonData = LoadResourceFile("laot-core", "/jsons/".. scriptName .."__".. fileName ..".json")
+        if jsonData then
+            local convertedData = json.decode(jsonData)
+            table.insert(convertedData, data)
+            SaveResourceFile("laot-core", "/jsons/".. scriptName .."__".. fileName ..".json", json.encode(convertedData), -1)
+        end
     else
         print(('^1[laot-core] ^0"%s" adlı bir json verisi olmamasına rağmen verileri alınmaya çalışıldı.'):format(fileName))
     end
