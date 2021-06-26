@@ -67,7 +67,25 @@ TriggerEvent('LAOTCore:GetObject', function(obj) LAOT = obj end)
 # Örnekler ve Bilgilendirme
 
 ###### JSON işlemleri
+[Serverside]
 
+JSON oluşturma
+```lua
+LAOT.JSON.Create(GetCurrentResourceName(), "bans")
+```
+
+JSON data çekme
+```lua
+LAOT.JSON.GetData(GetCurrentResourceName(), "bans")
+if jsonData ~= "404" then -- Eğer böyle bir veri var ise
+	local data = json.decode(jsonData) -- Veriyi lua tablosuna çeviriyoruz
+end
+```
+
+JSON veri ekleme
+```lua
+LAOT.JSON.Insert(GetCurrentResourceName(), "bans", { steam = "nil", license = "nil", name = "laot" })
+```
 
 ###### Notification - bildirim
 ```lua
