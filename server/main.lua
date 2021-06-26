@@ -13,6 +13,8 @@ LAOT                 = {}
 
 LAOT.ServerCallbacks = {}
 LAOT.Functions       = {}
+LAOT.JSON            = {}
+LAOT.JSONData        = {}
 
 AddEventHandler('LAOTCore:GetObject', function(cb)
 	cb(LAOT)
@@ -32,6 +34,26 @@ LAOT.Functions.TriggerCallback = function(name, requestId, source, cb, ...)
 	else
 		print(('[laot-core] "%s" callback bulunmamasına rağmen oynatıldı.'):format(name))
 	end
+end
+
+LAOT.JSON.Create = function(scriptName, fileName, data)
+    if not LAOT.JSONData[scriptName .. "__".. fileName] then
+        if scriptName and fileName and data then
+            SaveResourceFile("laot-core", "/jsons/".. scriptName .."__".. fileName ..".json", json.encode(data), -1)
+            LAOT.JSONData[scriptName .. "__".. fileName] = json.encode(data)
+        end
+    else
+        print(('^1[laot-core] ^0"%s" adlı bir json verisi zaten var olmasına rağmen oluşturulmaya çalışıldı.'):format(fileName))
+    end
+end
+
+LAOT.JSON.GetData = function(scriptName, fileName)
+    if scriptName and fileName then
+        local jsonData = LoadResourceFile("laot-core", "/jsons/".. scriptName .."__".. fileName ..".json")
+        return jsonData
+    else
+        print(('^1[laot-core] ^0"%s" adlı bir json verisi olmamasına rağmen verileri alınmaya çalışıldı.'):format(fileName))
+    end
 end
 
 LAOT.Functions.GetPlayerIdentifiers = function(id)
