@@ -66,15 +66,15 @@ TriggerEvent('LAOTCore:GetObject', function(obj) LAOT = obj end)
 
 # Örnekler ve Bilgilendirme
 
-###### JSON işlemleri
+JSON işlemleri
 [Serverside]
 
-JSON oluşturma
+###### JSON oluşturma
 ```lua
 LAOT.JSON.Create(GetCurrentResourceName(), "bans")
 ```
 
-JSON data çekme
+###### JSON data çekme
 ```lua
 LAOT.JSON.GetData(GetCurrentResourceName(), "bans")
 if jsonData ~= "404" then -- Eğer böyle bir veri var ise
@@ -82,12 +82,12 @@ if jsonData ~= "404" then -- Eğer böyle bir veri var ise
 end
 ```
 
-JSON veri ekleme
+###### JSON veri ekleme
 ```lua
 LAOT.JSON.Insert(GetCurrentResourceName(), "bans", { steam = "nil", license = "nil", name = "laot" })
 ```
 
-###### Notification - bildirim
+Notification - bildirim
 ```lua
 LAOT.Functions.Notify("inform", "Selam")
 LAOT.Functions.Notify("error", "Selam")
@@ -96,7 +96,7 @@ LAOT.Functions.Notify("success", "Selam")
 
 ![Örnek sonucu](https://cdn.discordapp.com/attachments/793769759362514964/834297798539083816/unknown.png)
 
-###### Bir bölgeye yakınken 3D yazı yazma
+Bir bölgeye yakınken 3D yazı yazma
 ```lua
 Citizen.CreateThread(function()
 	while LAOT == nil do -- LAOT datasının yüklenmesini bekliyoruz...
@@ -115,7 +115,7 @@ end)
 
 ![Örnek sonucu](https://cdn.discordapp.com/attachments/754629142502441051/782118333213311026/3D.png)
 
-###### Bir bölgeye yakınken GTA Altyazı metini yazmak
+Bir bölgeye yakınken GTA Altyazı metini yazmak
 
 ```lua
 Citizen.CreateThread(function()
@@ -134,7 +134,7 @@ end)
 
 ![Örnek sonucu](https://cdn.discordapp.com/attachments/754629142502441051/782117838123040788/GPS.png)
 
-###### Bir bölgede [E] basınca oyuncuyu kararma efekti ile ışınlamak
+Bir bölgede [E] basınca oyuncuyu kararma efekti ile ışınlamak
 ```lua
 Citizen.CreateThread(function()
 	while LAOT == nil do -- LAOT datasının yüklenmesini bekliyoruz...
