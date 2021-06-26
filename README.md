@@ -66,6 +66,9 @@ TriggerEvent('LAOTCore:GetObject', function(obj) LAOT = obj end)
 
 # Örnekler ve Bilgilendirme
 
+###### JSON işlemleri
+
+
 ###### Notification - bildirim
 ```lua
 LAOT.Functions.Notify("inform", "Selam")
