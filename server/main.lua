@@ -69,6 +69,19 @@ LAOT.JSON.Insert = function(scriptName, fileName, data)
     end
 end
 
+LAOT.JSON.Remove = function(scriptName, fileName, data_id)
+    if scriptName and fileName then
+        local jsonData = LoadResourceFile("laot-core", "/jsons/".. scriptName .."__".. fileName ..".json")
+        if jsonData then
+            local convertedData = json.decode(jsonData)
+            table.remove(convertedData, data_id)
+            SaveResourceFile("laot-core", "/jsons/".. scriptName .."__".. fileName ..".json", json.encode(convertedData), -1)
+        end
+    else
+        print(('^1[laot-core] ^0"%s" adlı bir json verisi olmamasına rağmen verileri alınmaya çalışıldı.'):format(fileName))
+    end
+end
+
 LAOT.Functions.GetPlayerIdentifiers = function(id)
     if id then
         data = {
