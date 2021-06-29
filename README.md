@@ -4,7 +4,7 @@ Eğer benim sistemlerim harici bir sisteminizde laot-core kullandıysanız bu be
 
 If you are using the laot-core functions except my systems. You can update your codes using this document. You can download my up to date systems from github.
 
-# LAOT-Core v1.1.5 > 2.0
+# LAOT-Core v1.1.5 > 2.2
 
 Öncelikle resources klasörünüzü workspace olarak açın. (visual studio yardımı ile)
 Sonra sol taraftaki büyüteç emojisine tıklayın.
