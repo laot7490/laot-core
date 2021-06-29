@@ -29,7 +29,7 @@ LAOTCore:getSharedObject -> LAOTCore:GetObject
 LAOTCore:Notification    -> LAOTCore:Client:Notify
 ```
 
-# LAOTCore v2.1-BETA
+# LAOTCore v2.2-BETA
 
 [Clientside]
 ```lua
