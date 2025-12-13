@@ -1,7 +1,8 @@
-fx_version "bodacious"
+fx_version "cerulean"
 
 game "gta5"
 author "laot"
+lua54 "yes"
 
 ui_page "nui/index.html"
 files {

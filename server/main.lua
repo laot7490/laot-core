@@ -1,13 +1,17 @@
 --[[
 
-	██╗░░░░░░█████╗░░█████╗░████████╗░░░██╗░██╗░██████╗░███████╗░█████╗░░█████╗░
-	██║░░░░░██╔══██╗██╔══██╗╚══██╔══╝██████████╗╚════██╗██╔════╝██╔══██╗██╔══██╗
-	██║░░░░░███████║██║░░██║░░░██║░░░╚═██╔═██╔═╝░░███╔═╝██████╗░╚██████║╚██████║
-	██║░░░░░██╔══██║██║░░██║░░░██║░░░██████████╗██╔══╝░░╚════██╗░╚═══██║░╚═══██║
-	███████╗██║░░██║╚█████╔╝░░░██║░░░╚██╔═██╔══╝███████╗██████╔╝░█████╔╝░█████╔╝
-	╚══════╝╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░░╚═╝░╚═╝░░░╚══════╝╚═════╝░░╚════╝░░╚════╝░
-	
-]]
+made by
+
+╭╮╱╱╭━━━┳━━━┳━━━━╮
+┃┃╱╱┃╭━╮┃╭━╮┃╭╮╭╮┃
+┃┃╱╱┃┃╱┃┃┃╱┃┣╯┃┃╰╯
+┃┃╱╭┫╰━╯┃┃╱┃┃╱┃┃
+┃╰━╯┃╭━╮┃╰━╯┃╱┃┃
+╰━━━┻╯╱╰┻━━━╯╱╰╯
+
+Discord: laot7490
+
+--]]
 
 LAOT                 = {}
 
@@ -103,7 +107,7 @@ LAOT.Functions.GetPlayerIdentifiers = function(id)
             elseif string.sub(v, 1, string.len("ip:")) == "ip:" then
                 data.ip = v
             elseif string.sub(v, 1, string.len("discord:")) == "discord:" then
-                data.discord = tonumber(split(v, ":")[2])
+                data.discord = tonumber(LAOT.Functions.Split(v, ":")[2])
             elseif string.sub(v, 1, string.len("live:")) == "live:" then
                 data.liveid = v
             end
@@ -130,7 +134,7 @@ AddEventHandler("LAOTCore:Server:CheckIdentifiers", function(cb)
     TriggerClientEvent("LAOTCore:Client:CheckIdentifiers", src, identifiers)
 end)
 
-function split(str, pat)
+LAOT.Functions.Split = function(str, pat)
     local t = {}
     local fpat = "(.-)" .. pat
     local last_end = 1
@@ -180,7 +184,7 @@ Citizen.CreateThread( function()
                 if C.Locale == 'tr' then
                     print("^2[laot-core] ^0Sistem düzgün başlatıldı. Mevcut versiyon: v".. data.latestVersion)
                 elseif C.Locale == 'en' then
-                    print("^2[laot-core] ^0Everything is fine. Current version: v".. data.latestVersion)
+                    print("^2[laot-core] ^0System started successfully. Current version: v".. data.latestVersion)
                 end
             end
 

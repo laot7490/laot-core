@@ -1,6 +1,6 @@
 C = {} -- laot#2599
 
-C.Version = "2.2" 
+C.Version = "2.3" 
 -- Pre-release
 
 C.Locale = "tr" 
@@ -8,3 +8,4 @@ C.Locale = "tr"
 
 C.Debug = false 
 -- Yaptığı eylemleri konsola belirtsin mi?
+-- Will the actions be debugged on console?
