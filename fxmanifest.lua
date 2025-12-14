@@ -25,6 +25,7 @@ server_scripts {
     "locales/tr.lua",
     "locales/en.lua",
     "server/main.lua",
+    "server/version.lua"
 }
 
 exports {

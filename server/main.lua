@@ -155,22 +155,21 @@ end
 
 Citizen.CreateThread( function()
     Citizen.Wait(1000)
-    print("\n")
-    print("^1##          ###     #######  ######## ")
-    print("^1##         ## ##   ##     ##    ##    ")
-    print("^1##        ##   ##  ##     ##    ##    ")
-    print("^1##       ##     ## ##     ##    ##    ")
-    print("^1##       ######### ##     ##    ##    ")
-    print("^1##       ##     ## ##     ##    ##    ")
-    print("^1######## ##     ##  #######     ##    ")
+    print([[^1  _             _                            
+ | |           | |                           
+ | | __ _  ___ | |_ ______ ___ ___  _ __ ___ 
+ | |/ _` |/ _ \| __|______/ __/ _ \| '__/ _ \
+ | | (_| | (_) | |_      | (_| (_) | | |  __/
+ |_|\__,_|\___/ \__|      \___\___/|_|  \___|
+                                             
+                                             ]])
     resourceName = GetCurrentResourceName()
     if resourceName ~= "laot-core" then 
-        print("\n")
-        print("^0Please do not change script name / Lütfen script ismini değiştirmeyiniz.\n")
-        print("https://github.com/LAOT7490/LAOT-core/releases/latest\n")
+        print("^0Please do not change script name / Lütfen script ismini değiştirmeyiniz.")
+        print("^0https://github.com/LAOT7490/LAOT-core/releases/latest")
     end
   
-    CheckVersion = function(err, result, headers)
+    CheckVersionCore = function(err, result, headers)
 
         if result then
 
@@ -182,16 +181,16 @@ Citizen.CreateThread( function()
                     print("^3Güncel versiyonu kullanmıyorsunuz, lütfen en yeni versiyona güncelleyin.")
                     print("^1v".. C.Version .." ^0> ^2v".. data.latestVersion .."")
                 elseif C.Locale == 'en' then
-                    print("^3You are not using the latest version, please update.")
+                    print("^3Script is not up-to-date, please update to newest version.")
                     print("^1v".. C.Version .." ^0> ^2v".. data.latestVersion .."")
                 end
                 print("^0https://github.com/laot7490/laot-core/releases/latest")
             end
             if data.latestVersion == C.Version then
                 if C.Locale == 'tr' then
-                    print("^0Sistem düzgün başlatıldı.")
+                    print("^0Sistem güncel.")
                 elseif C.Locale == 'en' then
-                    print("^0System started successfully.")
+                    print("^0Script is up-to-date..")
                 end
             end
 
@@ -199,5 +198,5 @@ Citizen.CreateThread( function()
     end
 
 
-    PerformHttpRequest("http://raw.githubusercontent.com/laot7490/laot-core/refs/heads/master/version.json", CheckVersion, "GET")
+    PerformHttpRequest("http://raw.githubusercontent.com/laot7490/laot-core/refs/heads/master/version.json", CheckVersionCore, "GET")
 end)

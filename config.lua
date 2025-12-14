@@ -1,6 +1,6 @@
 C = {} -- laot#2599
 
-C.Version = "2.3" 
+C.Version = "2.4" 
 -- Pre-release
 
 C.Locale = "tr" 
